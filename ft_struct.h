@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 23:21:37 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/08 23:32:37 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/16 22:41:44 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define FLAGS(t) (t == '#' || t == '0' || t == '-' || t == '+' || t == ' ')
 
 # include <stdarg.h>
-
-# include <stdio.h> // To delete
+# include <stdlib.h>
+# include <stdio.h>
 
 # include "../libft/libft.h"
 
@@ -40,7 +40,5 @@ typedef struct		s_cs
 	char			modifier2;
 	char			type;
 }					t_cs;
-
-int	(*set[6])(char **, const char *, va_list, va_list *, t_cs *);
 
 #endif

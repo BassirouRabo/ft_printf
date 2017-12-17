@@ -6,91 +6,102 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/08 23:33:46 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/16 22:41:53 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		set_index(char **dest, const char *str, va_list head, va_list *args,
-		t_cs *cs)
-{
-	if (!ft_isdigit((int)str[1]) && str[2] == '$')
-		return (0);
-	cs->index = str[1] - '0';
-	return (cs->index);
-}
-
-int		is_valide(const char *str)
+int		ft_is_valid(char *str)
 {
 	return (1);
 }
 
-int		ft_jump(int i, const char *str, va_list head, va_list *args)
+char	*ft_format(char *str, va_list *args)
 {
 	t_cs	*cs;
-	char	*dest;
+	int		i;
 
-	if (!(cs = ft_memalloc(sizeof(t_cs))))
-		return (-1);
-	set[0] = set_type;
-	set[1] = set_index;
-	set[2] = set_mod;
-	set[3] = set_width;
-	set[4] = set_prec;
-	set[5] = set_flags;
-	dest = NULL;
-	while (i-- > 0)
-		str++;
-	if (!is_valide(str))
-		return (-1);
 	i = 0;
-	while (i < 6)
-		if ((set[i++](&dest, str, head, args, cs)) == -1)
-			return (-1);
-	if (dest)
-		ft_putstr (str);
-	//  ft_memdel(&cs);
-	return (9);
-	//return (sizeof(dest));
+	if (!ft_is_valid(str) || !(cs = ft_memalloc(sizeof(t_cs))))
+		return (NULL);
+	while (i < 5)
+		if (((*get[i++].f)(str, cs)) == -1)
+			return (NULL);
+	i = 0;
+	while (i < 14)
+	{
+		if (cs->type && cs->type == set[i].type)
+			return (*set[i].f)(args, cs);
+		i++;
+	}
+	return (NULL);
+}
+
+char	*ft_concat(char *dest, char *str, int len)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	if (!len)
+		len = ft_strlen(str);
+	if (!dest)
+	{
+		if (!(dest = calloc(sizeof(char), (len + 1))))
+			return (NULL);
+	}
+	else
+	{
+		if (!(dest = realloc(dest, sizeof(char) *(ft_strlen(dest) + len + 1))))
+			return (NULL);
+	}
+	while (dest && dest[i])
+		i++;
+	while (str && *str && len-- > 0)
+		dest[i++] = *str++;
+	dest[i] = '\0';
+	return (dest);
 }
 
 int		ft_printf(const char *str, ...)
 {
-	int		i;
-	int		n;
-	va_list	head;
 	va_list	args;
+	char	*dest;
 
-	i = 0;
-	va_start(head, str);
-	va_copy(args, head);
-	while (str && str[i])
+	dest = NULL;
+	va_start(args, str);
+	while (str && *str)
 	{
-		n = 0;
-		if (str[i] != '%')
-			ft_putchar(str[i++]);
-		if (str[i] == '%' && str[i + 1] == '%')
+		if (*str == '%' && *(str + 1) && '%' == *(str + 1)
+				&& str++ && !(dest = ft_concat(dest, (char *)str++, 1)))
+			return (-1);
+		if (*str == '%' && *(str + 1) != '%')
 		{
-			ft_putchar('%');
-			i += 2;
-		}
-		if (str[i] == '%')
-		{
-			n = ft_jump(i, str, head, &args);
-			if (n == -1)
+			if (!(dest = ft_concat(dest, ft_format((char *)str, &args), 0)))
 				return (-1);
-			i += n;
+			while (!TYPE(*str))
+				 str++;
+			str++;
 		}
-	// 	str = va_arg(args, char *);
+		if (*str != '%' && !(dest = ft_concat(dest, (char *)str++, 1)))
+			return (-1);
 	}
+	ft_putstr(dest);
 	va_end(args);
-	va_end(head);
-	return (i);
+	return (sizeof(dest));
 }
 
 int		main(int argc, char **argv)
 {
-	ft_printf("Hello world %% alima  %2$04.3ld Jour", "lundi", "mardi");
+	 printf("[%+12.7d]\n", -123);
+	 ft_printf("[%+12.7d]\n", -123);
+	//ft_printf("[%d]\n", 350);
+	// ft_printf("Hello %% %lld world %s %ls How ", -3450, "bibi", "matano");
+//	 ft_printf("Hello %s %S %c %C world", "bibi", "bibi", 'k', 'k');
+//	ft_printf("%19.2S\n", "salut");
+//	ft_printf("Hello world %% alima  %2$04.3ld Jour", "lundi", "mardi");
+//	ft_printf("Hello %ls how", "123");
 	return (0);
 }
