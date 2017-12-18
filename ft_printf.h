@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/17 23:52:38 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/18 01:11:12 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "ft_struct.h"
 # include "ft_get.h"
-# include "ft_set.h"
+# include "ft_set1.h"
+# include "ft_set2.h"
 
 int		ft_printf(const char *restrict format, ...);
 int		ft_is_valid(char *str);
