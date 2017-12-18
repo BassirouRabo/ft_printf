@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/16 22:41:50 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:39:10 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ t_set	set[] =
 	{ 'u', ft_set_u },
 	{ 'U', ft_set_u },
 	{ 'x', ft_set_x },
-	{ 'X', ft_set_X },
+	{ 'X', ft_set_x },
 	{ 'c', ft_set_c },
-	{ 'C', ft_set_C }
+	{ 'C', ft_set_c }
 };
 
 t_get	get[] =

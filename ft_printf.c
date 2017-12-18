@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/16 22:41:53 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:36:32 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,11 @@ int		ft_printf(const char *str, ...)
 
 int		main(int argc, char **argv)
 {
-	 printf("[%+12.7d]\n", -123);
-	 ft_printf("[%+12.7d]\n", -123);
-	//ft_printf("[%d]\n", 350);
-	// ft_printf("Hello %% %lld world %s %ls How ", -3450, "bibi", "matano");
-//	 ft_printf("Hello %s %S %c %C world", "bibi", "bibi", 'k', 'k');
-//	ft_printf("%19.2S\n", "salut");
-//	ft_printf("Hello world %% alima  %2$04.3ld Jour", "lundi", "mardi");
-//	ft_printf("Hello %ls how", "123");
+	int	i = 123;
+	int	*p = &i;
+	 printf("[%20p]\n", p);
+	 ft_printf("[%20p]\n", p);
+	 ft_printf("{%x}\n", 35000);
+	 ft_printf("{%X}\n", 35000);
 	return (0);
 }
