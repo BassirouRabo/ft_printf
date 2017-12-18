@@ -6,10 +6,9 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 23:21:37 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/17 23:43:28 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:57:17 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FT_STRUCT_H
 # define FT_STRUCT_H

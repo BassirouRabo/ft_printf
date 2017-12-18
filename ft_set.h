@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 01:09:04 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/17 23:43:27 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:54:51 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_add_str(char *str, int max);
 char	*ft_add_zero(char *dest, int min, int prefix);
 char	*ft_add_prefix(char *out, char prefix1, char prefix2);
 int		ft_find_max(t_cs *cs, int min, int prefix);
-int		ft_find_min(t_cs *cs, int len, int  prefix);
+int		ft_find_min(t_cs *cs, int len, int prefix);
 char	*ft_to_base(uint64_t number, int base, char bases[]);
 char	*ft_to_intmax_t(va_list *args, t_cs *cs);
 char	*ft_to_uintmax_t(va_list *args, t_cs *cs);

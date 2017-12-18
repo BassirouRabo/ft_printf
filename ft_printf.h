@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/17 23:39:10 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:52:38 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ft_get.h"
 # include "ft_set.h"
 
-int		ft_printf(const char * restrict format, ...);
+int		ft_printf(const char *restrict format, ...);
 int		ft_is_valid(char *str);
 char	*ft_format(char *str, va_list *args);
 char	*ft_concat(char *dest, char *str, int len);
@@ -33,7 +33,7 @@ typedef struct		s_set
 	char			*(*f)(va_list *, t_cs *);
 }					t_set;
 
-t_set	set[] =
+t_set				t_sets[] =
 {
 	{ 's', ft_set_s },
 	{ 'S', ft_set_s },
@@ -51,7 +51,7 @@ t_set	set[] =
 	{ 'C', ft_set_c }
 };
 
-t_get	get[] =
+t_get				t_gets[] =
 {
 	{ ft_get_type },
 	{ ft_get_mod },

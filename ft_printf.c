@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/17 23:36:32 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:52:56 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ char	*ft_format(char *str, va_list *args)
 	if (!ft_is_valid(str) || !(cs = ft_memalloc(sizeof(t_cs))))
 		return (NULL);
 	while (i < 5)
-		if (((*get[i++].f)(str, cs)) == -1)
+		if (((*t_gets[i++].f)(str, cs)) == -1)
 			return (NULL);
 	i = 0;
 	while (i < 14)
 	{
-		if (cs->type && cs->type == set[i].type)
-			return (*set[i].f)(args, cs);
+		if (cs->type && cs->type == t_sets[i].type)
+			return (*t_sets[i].f)(args, cs);
 		i++;
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 00:32:23 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/14 00:54:54 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:46:32 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_get_width(char *str, t_cs *cs)
 		{
 			i++;
 			while ((int)ft_isdigit((int)str[i]))
-				cs->width = (cs->width * 10) + str[i++] - '0';		
+				cs->width = (cs->width * 10) + str[i++] - '0';
 			return (cs->width);
 		}
 		i++;
@@ -78,7 +78,7 @@ int		ft_get_width(char *str, t_cs *cs)
 		{
 			while (ft_isdigit((int)str[i]))
 			{
-				cs->width = (cs->width * 10) + str[i] - '0';		
+				cs->width = (cs->width * 10) + str[i] - '0';
 				i++;
 			}
 			return (cs->width);
@@ -114,15 +114,15 @@ int		ft_get_mod(char *str, t_cs *cs)
 	i--;
 	if (str[i] == 'j' || str[i] == 'z')
 	{
-		cs->modifier2 = str[i]; 
+		cs->modifier2 = str[i];
 		return (1);
 	}
 	if (str[i] == 'h' || str[i] == 'l')
 	{
 		if (str[i - 1] == 'h' || str[i - 1] == 'l')
 		{
-			cs->modifier1 = str[i]; 
-			cs->modifier2 = str[i - 1]; 
+			cs->modifier1 = str[i];
+			cs->modifier2 = str[i - 1];
 			return (2);
 		}
 		cs->modifier2 = str[i];
