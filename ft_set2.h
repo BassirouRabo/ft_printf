@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:07:08 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/18 01:09:49 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:12:15 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 char	*ft_set_x(va_list *args, t_cs *cs);
 char	*ft_set_o(va_list *args, t_cs *cs);
 char	*ft_set_p(va_list *args, t_cs *cs);
+char	*ft_set_z(va_list *args, t_cs *cs);
 
 #endif

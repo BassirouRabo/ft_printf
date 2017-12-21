@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 23:21:37 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 02:52:06 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:43:19 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 		|| t == 'o' || t == 'O' || t == 'u' || t == 'U' || t == 'x'\
 		|| t == 'X' || t == 'c' || t == 'C' || t == 'd' || t == '%')
 
-# define TYPE_UP(t) (t == 'D' || t == 'O' || t == 'U' || t == 'C' || t == 'S')
-
 # define FLAGS(t) (t == '#' || t == '0' || t == '-' || t == '+' || t == ' ')
+
+# include "libft.h"
 
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdio.h>
-
-# include "libft/libft.h"
+# include <stdio.h>	// To delete
 
 typedef struct		s_cs
 {
@@ -40,7 +38,6 @@ typedef struct		s_cs
 	char			modifier1;
 	char			modifier2;
 	char			type;
-	int				digit;
 }					t_cs;
 
 #endif

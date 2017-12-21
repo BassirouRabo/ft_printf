@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 00:35:58 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/18 00:57:20 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 01:49:14 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_add_zero(char *dest, int min, int prefix)
 	int	i;
 
 	i = 0;
+// 	printf("dest [%s] min[%d] prefix[%c]\n", dest, min, prefix);
 	min = prefix ? min - prefix : min;
 	if (*dest != ' ')
 		return (dest);
@@ -25,6 +26,16 @@ char	*ft_add_zero(char *dest, int min, int prefix)
 	while (dest[i] == ' ')
 		dest[i++] = '0';
 	return (dest);
+}
+
+int		ft_find_zero(t_cs *cs, char *dest, char prefix, int min)
+{
+	int	size_prefix;
+
+	size_prefix = prefix ? 1 : 0;
+	if (cs->precision)
+		return (cs->precision + prefix > min ? cs->precision : min);
+	return (ft_strlen(dest));
 }
 
 char	*ft_add_prefix(char *out, char prefix1, char prefix2)
@@ -59,13 +70,13 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 	return (out);
 }
 
-char	*ft_add_str(char *str, int max)
+char	*ft_add_str(char *str, int max, t_cs *cs)
 {
 	int		i;
 	char	*dest;
 
 	i = 0;
-	if (!(dest = ft_memalloc(sizeof(char) * (max + 1))))
+	if (!(dest = ft_memalloc(max + 1)))
 		return (NULL);
 	while (i < max && max - i > ft_strlen(str))
 		dest[i++] = ' ';

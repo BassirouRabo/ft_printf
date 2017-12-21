@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert.h                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 01:00:29 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 02:23:19 by brabo-hi         ###   ########.fr       */
+/*   Created: 2017/11/07 15:40:48 by brabo-hi          #+#    #+#             */
+/*   Updated: 2017/12/18 23:33:06 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CONVERT_H
-# define FT_CONVERT_H
+#include "libft.h"
 
-# include "ft_struct.h"
+int	ft_atoi(const char *str)
+{
+	int		number;
+	int		i;
+	int		signe;
 
-char	*ft_to_left(char *str);
-char	*ft_to_intmax_t(va_list *args, t_cs *cs, int base);
-char	*ft_to_uintmax_t(va_list *args, t_cs *cs, int base);
-char	*ft_cut_str(char *out, int min);
-char	*ft_delete_last_zero(t_cs *cs, char *out);
-
-#endif
+	number = 0;
+	i = 0;
+	signe = 0;
+	while (SED(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		signe = str[i] == '-' ? 1 : 0;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+		number = (number * 10) + str[i++] - '0';
+	return (signe ? -number : number);
+}
