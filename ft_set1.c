@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 02:53:04 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 15:28:06 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_set_c(va_list *args, t_cs *cs)
 		return (NULL);
 	dest[0] = out;
 	dest[1] = '\0';
+//	printf("max [%d] dest[%s] ou[%c]\n", max, dest, out);
 	max = cs->width ? cs->width : ft_strlen((char *)&out);
 	if (!ft_strlen((char *)&out))
 		max = max ? max - 1 : 0;

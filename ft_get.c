@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 00:32:23 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 02:52:15 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 15:36:26 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,7 @@ int		ft_get_mod(char *str, t_cs *cs)
 			cs->modifier2 = str[i - 1];
 			return (2);
 		}
-		if (cs->modifier2)
-			cs->modifier1 = str[i];
-		else
-			cs->modifier2 = str[i];
+		cs->modifier2 = cs->modifier2 ? cs->modifier2 : str[i];
 		return (cs->modifier1 ? 2 : 1);
 	}
 	return (0);

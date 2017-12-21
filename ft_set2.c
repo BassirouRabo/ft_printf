@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:06:54 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 03:00:05 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 09:18:24 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ char	*ft_set_x(va_list *args, t_cs *cs)
 	size_prefix = ft_atoi(out) ? size_prefix : 0;
 
 	if (!(dest = ft_add_str(out, ft_find_max(cs, min, size_prefix), cs)))
+		return (NULL);
+
+	if (!cs->precision && cs->digit  && !ft_atoi(dest) && min-- && !(dest = ft_delete_last_zero(cs, dest)))
 		return (NULL);
 
 	if (cs->precision > ft_strlen(out) + size_prefix

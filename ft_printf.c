@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 03:00:13 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 15:36:32 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_printf(const char *str, ...)
 
 int		maini(void)
 {
-	printf("[%05o]\n", 42);
-	ft_printf("[%05o]\n", 42);
+	printf("[%5.d]\n", 0);
+	ft_printf("[%5.d]\n", 0);
 	return (0);
 }
