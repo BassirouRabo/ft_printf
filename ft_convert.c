@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 16:06:38 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 22:46:50 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_to_left(char *str)
 	if (*str != ' ')
 		return (str);
 	if (!(dest = ft_memalloc(sizeof(char) * (ft_strlen(str) + 1))))
-		return (NULL);
+		exit(0);
 	while (*str == ' ' && str++)
 		i++;
 	while (*str)
@@ -62,19 +62,19 @@ char	*ft_to_uintmax_t(va_list *args, t_cs *cs, int base)
 
 	out = va_arg(*args, uintmax_t);
 	if (cs->modifier1 == 'h' && cs->modifier2 == 'h')
-		out	= (unsigned char)out;
-	else if (!cs->modifier1 &&cs->modifier2 == 'h')
-		out	= (unsigned short)out;
+		out = (unsigned char)out;
+	else if (!cs->modifier1 && cs->modifier2 == 'h')
+		out = (unsigned short)out;
 	else if (cs->modifier1 == 'l' && cs->modifier2 == 'l')
-		out	= (unsigned long long)out;
+		out = (unsigned long long)out;
 	else if (!cs->modifier1 && cs->modifier2 == 'l')
-		out	= (unsigned long)out;
+		out = (unsigned long)out;
 	else if (cs->modifier2 == 'j')
-		out	= (uintmax_t)out;
+		out = (uintmax_t)out;
 	else if (cs->modifier2 == 'z')
-		out	= (size_t)out;
+		out = (size_t)out;
 	else
-		out	= (unsigned int)out;
+		out = (unsigned int)out;
 	return (ft_itoa_base_uintmax_t(out, base));
 }
 
@@ -87,7 +87,7 @@ char	*ft_cut_str(char *out, int min)
 	if (ft_strlen(out) && ft_strlen(out) <= min)
 		return (out);
 	if (!(dest = ft_memalloc(min + 1)))
-		return (NULL);
+		exit(0);
 	while (min--)
 		dest[i++] = out ? *out++ : (char)NULL;
 	dest[i] = '\0';
@@ -103,7 +103,7 @@ char	*ft_delete_last_zero(t_cs *cs, char *out)
 	i = 0;
 	size = cs->width ? ft_strlen(out) + 1 : ft_strlen(out);
 	if (!(dest = ft_memalloc(size)))
-		return (NULL);
+		exit(0);
 	size = cs->width ? size - 2 : size - 1;
 	while (size--)
 		dest[i++] = ' ';
@@ -112,42 +112,3 @@ char	*ft_delete_last_zero(t_cs *cs, char *out)
 	dest[i] = '\0';
 	return (dest);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

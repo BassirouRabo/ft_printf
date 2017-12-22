@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 00:35:58 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 21:56:48 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:08:26 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ char	*ft_add_zero(char *dest, int min, int prefix)
 	return (dest);
 }
 
-int		ft_find_zero(t_cs *cs, char *dest, char prefix, int min)
-{
-	int	size_prefix;
-
-	size_prefix = prefix ? 1 : 0;
-	if (cs->precision)
-		return (cs->precision + prefix > min ? cs->precision : min);
-	return (ft_strlen(dest));
-}
-
 char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 {
 	int		i;
@@ -46,7 +36,7 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 	if (*out != '0' && *out != ' ')
 	{
 		if (!(dest = ft_memalloc(ft_strlen(out) + 1 + (prefix2 ? 1 : 0))))
-			exit (0);
+			exit(0);
 		dest[i++] = prefix1;
 		if (prefix2)
 			dest[i++] = prefix2;
@@ -76,7 +66,7 @@ char	*ft_add_str(char *str, int max, t_cs *cs)
 
 	i = 0;
 	if (!(dest = ft_memalloc(max + 1)))
-		exit (0);
+		exit(0);
 	while (i < max && max - i > ft_strlen(str))
 		dest[i++] = ' ';
 	while (*str)
@@ -85,33 +75,37 @@ char	*ft_add_str(char *str, int max, t_cs *cs)
 	return (dest);
 }
 
-int		ft_find_max(t_cs *cs, int min, int prefix)
+char	*ft_add_null(char *out)
 {
-	int	max;
-	int	precision;
-	int	width;
+	char	*dest;
 
-	precision = cs->precision + prefix;
-	width = cs->width;
-	max = 0;
-	if (precision >= width && precision >= min)
-		max = precision;
-	if (precision >= width && precision <= min)
-		max = min;
-	if (precision <= width && precision >= min)
-		max = width;
-	if (precision < width && precision < min && width >= min)
-		max = width;
-	if (precision < width && precision < min && width <= min)
-		max = min;
-	return (max);
+	if (!(dest = ft_memalloc(7)))
+		exit(0);
+	dest[0] = '(';
+	dest[1] = 'n';
+	dest[2] = 'u';
+	dest[3] = 'l';
+	dest[4] = 'l';
+	dest[5] = ')';
+	dest[6] = '\0';
+	return (dest);
 }
 
-int		ft_find_min(t_cs *cs, int len, int prefix)
+char	*ft_add_np(char c)
 {
-	int	precision;
+	char	*dest;
+	int		i;
 
-	len += prefix;
-	precision = cs->precision + prefix;
-	return (precision > len ? precision : len);
+	i = 0;
+	if (!(dest = ft_memalloc(c ? 2 : 3)))
+		exit(0);
+	if (c)
+		dest[i++] = c;
+	else
+	{
+		dest[i++] = '^';
+		dest[i++] = '@';
+	}
+	dest[i] = '\0';
+	return (dest);
 }

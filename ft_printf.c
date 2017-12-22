@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 22:25:58 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:04:56 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ char	*ft_format(char *str, va_list *args)
 		i++;
 	}
 	return (NULL);
-}
-
-void	ft_str(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (i++ < 4)
-		write(1, str++, 1);
 }
 
 int		ft_printf(const char *str, ...)

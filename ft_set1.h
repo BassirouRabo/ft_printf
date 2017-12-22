@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:59 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 18:37:49 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:04:02 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_utils.h"
 # include "ft_convert.h"
 # include "ft_helper.h"
+# include "ft_find.h"
 
 char	*ft_set_s(va_list *args, t_cs *cs);
 char	*ft_set_d(va_list *args, t_cs *cs);

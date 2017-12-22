@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 19:53:26 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:03:09 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "ft_set1.h"
 # include "ft_set2.h"
 # include "ft_helper.h"
+# include "ft_find.h"
 
 int		ft_printf(const char *restrict format, ...);
 char	*ft_format(char *str, va_list *args);

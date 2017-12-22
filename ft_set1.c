@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 22:18:26 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 22:31:55 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_set_s(va_list *args, t_cs *cs)
 		out = (wchar_t *)va_arg(*args, wchar_t *);
 	else
 		out = (wchar_t *)va_arg(*args, char *);
-   	dest = !ft_strlen((char *)out) && !cs->width && !cs->precision ? ft_add_null((char *)out) : (char *)out;
+	dest = !ft_strlen((char *)out) && !cs->width && !cs->precision
+		? ft_add_null((char *)out) : (char *)out;
 	min = ft_strlen((char *)dest);
 	min = cs->precision && cs->precision < min ? cs->precision : min;
 	max = (cs->width && cs->width > min) ? cs->width : min;
@@ -46,7 +47,7 @@ char	*ft_set_c(va_list *args, t_cs *cs)
 		out = (wchar_t)va_arg(*args, wchar_t);
 	else
 		out = (unsigned char)va_arg(*args, int);
-	dest = ft_add_np((char )out);
+	dest = ft_add_np((char)out);
 	if (out)
 		max = cs->width > 1 ? cs->width : 1;
 	else
@@ -77,10 +78,11 @@ char	*ft_set_d(va_list *args, t_cs *cs)
 		out++;
 	min = ft_find_min(cs, ft_strlen(out), prefix ? 1 : 0);
 	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs);
-	if (!cs->precision && cs->digit  && !ft_atoi(dest) && min--)
+	if (!cs->precision && cs->digit && !ft_atoi(dest) && min--)
 		dest = ft_delete_last_zero(cs, dest);
 	if (cs->precision > ft_strlen(out))
-		dest = ft_add_zero(dest, (cs->precision + (prefix ? 1 : 0)), (prefix ? 1 : 0));
+		dest = ft_add_zero(dest,
+				(cs->precision + (prefix ? 1 : 0)), (prefix ? 1 : 0));
 	if (!cs->precision && !cs->flag3 && cs->flag2)
 		dest = ft_add_zero(dest, ft_strlen(dest), prefix ? 1 : 0);
 	if (prefix)
@@ -109,12 +111,13 @@ char	*ft_set_u(va_list *args, t_cs *cs)
 	min = ft_find_min(cs, ft_strlen(out), prefix ? 1 : 0);
 	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs);
 	if (cs->precision > ft_strlen(out) + (prefix ? 1 : 0))
-		dest = ft_add_zero(dest, (cs->precision + (prefix ? 1 : 0)), (prefix ? 1 : 0));
+		dest = ft_add_zero(dest,
+				(cs->precision + (prefix ? 1 : 0)), (prefix ? 1 : 0));
 	if (!cs->precision && !cs->flag3 && cs->flag2)
 		dest = ft_add_zero(dest, ft_strlen(dest), prefix ? 1 : 0);
 	if (prefix)
-	   dest = ft_add_prefix(dest, prefix, 0);
+		dest = ft_add_prefix(dest, prefix, 0);
 	if (cs->flag3)
-	   dest = ft_to_left(dest);
+		dest = ft_to_left(dest);
 	return (dest);
 }
