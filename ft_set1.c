@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 21:24:04 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:43:05 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ char	*ft_set_c(va_list *args, t_cs *cs)
 		out = (wchar_t)va_arg(*args, wchar_t);
 	else
 		out = (unsigned char)va_arg(*args, int);
-	dest = ft_add_np((char *)&out);
-	if (ft_strlen((char *)&out))
+	dest = ft_add_np((char )out);
+	if (out)
 		max = cs->width > 1 ? cs->width : 1;
 	else
 		max = cs->width + 1 > 2 ? cs->width + 1 : 2;

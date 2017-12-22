@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:53:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 21:21:37 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:41:56 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ char	*ft_add_null(char *out)
 	return (dest);
 }
 
-char	*ft_add_np(char *out)
+char	*ft_add_np(char c)
 {
 	char	*dest;
 	int		i;
 
 	i = 0;
-	if (!(dest = ft_memalloc(out ? 2 : 3)))
+	if (!(dest = ft_memalloc(c ? 2 : 3)))
 		exit (0);
-	if (ft_atoi(out))
-		dest[i++] = *out++;
+	if (c)
+		dest[i++] = c;
 	else
 	{
 		dest[i++] = '^';
