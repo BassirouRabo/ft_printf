@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 18:41:39 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:24:17 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ char	*ft_format(char *str, va_list *args)
 	return (NULL);
 }
 
+void	ft_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < 4)
+		write(1, str++, 1);
+}
+
 int		ft_printf(const char *str, ...)
 {
 	va_list	args;
@@ -58,24 +67,12 @@ int		ft_printf(const char *str, ...)
 	}
 	if (!dest)
 		return (0);
-	ft_putstr(dest);
 	va_end(args);
-	return (ft_strlen(dest));
+	return (ft_display(dest));
 }
 
 int		maini(void)
 {
-	char	s[] = {0};
-	char	c	= 0%31;
-	int	len;
-
-	char	dest[2];
-	dest[0] = 0*31;
-	dest[1] = '\0';
-
-// 	len = printf("%c", c);
-//	printf("\nlen %d\n", len);
-//	ft_printf("[%c]\n", 0);
-	ft_printf("%s\n", NULL);
+	ft_printf("%c\n", 42);
 	return (0);
 }

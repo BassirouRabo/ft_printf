@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 18:44:53 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:24:04 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ char	*ft_set_c(va_list *args, t_cs *cs)
 		out = (wchar_t)va_arg(*args, wchar_t);
 	else
 		out = (unsigned char)va_arg(*args, int);
-	if (!(dest = ft_memalloc(2)))
-		return (NULL);
-	dest[0] = out;
-	dest[1] = '\0';
-	max = cs->width ? cs->width : ft_strlen((char *)&out);
-	if (!ft_strlen((char *)&out))
-		max = max ? max - 1 : 0;
+	dest = ft_add_np((char *)&out);
+	if (ft_strlen((char *)&out))
+		max = cs->width > 1 ? cs->width : 1;
+	else
+		max = cs->width + 1 > 2 ? cs->width + 1 : 2;
 	if (!(dest = ft_add_str(dest, max, cs)))
 		return (NULL);
 	if (cs->flag3 && !(dest = ft_to_left(dest)))

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:53:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 18:29:30 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:21:37 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,79 @@ char	*ft_add_null(char *out)
 	dest[6] = '\0';
 	return (dest);
 }
+
+char	*ft_add_np(char *out)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	if (!(dest = ft_memalloc(out ? 2 : 3)))
+		exit (0);
+	if (ft_atoi(out))
+		dest[i++] = *out++;
+	else
+	{
+		dest[i++] = '^';
+		dest[i++] = '@';
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+int		ft_display(char *dest)
+{
+	int	i;
+	int	len;
+
+	len = ft_strlen(dest);
+	i = 0;
+	while (dest[i])
+	{
+		if (dest[i] == '^' && dest[i +1] && dest[i + 1] == '@')
+			len--;
+		i++;
+	}
+	ft_putstr(dest);
+	return (len);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
