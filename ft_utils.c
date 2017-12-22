@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 00:35:58 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 21:44:13 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 21:56:48 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 	if (*out != '0' && *out != ' ')
 	{
 		if (!(dest = ft_memalloc(ft_strlen(out) + 1 + (prefix2 ? 1 : 0))))
-			return (NULL);
+			exit (0);
 		dest[i++] = prefix1;
 		if (prefix2)
 			dest[i++] = prefix2;
@@ -76,7 +76,7 @@ char	*ft_add_str(char *str, int max, t_cs *cs)
 
 	i = 0;
 	if (!(dest = ft_memalloc(max + 1)))
-		return (NULL);
+		exit (0);
 	while (i < max && max - i > ft_strlen(str))
 		dest[i++] = ' ';
 	while (*str)
