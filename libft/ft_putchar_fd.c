@@ -6,11 +6,11 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:44:20 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/18 04:09:03 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:44:00 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_struct.h"
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

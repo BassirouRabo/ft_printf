@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:04:56 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:39:39 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_printf(const char *str, ...)
 			if (!(dest = ft_concat(dest, ft_format((char *)str, &args), 0)))
 				return (-1);
 			while (!TYPE(*str))
-				 str++;
+				str++;
 			str++;
 		}
 		if (str && *str != '%' && *str != '\0')

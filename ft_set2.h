@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:07:08 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:04:15 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:15:33 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_SET2_H
 
 # include "ft_struct.h"
-# include "ft_utils.h"
+# include "ft_add.h"
 # include "ft_convert.h"
 # include "ft_helper.h"
 # include "ft_find.h"

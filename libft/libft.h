@@ -6,20 +6,18 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 08:23:57 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 00:06:27 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:31:27 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-
 # define SED(x) (TRIM(x) || x == '\v' || x == '\r' || x == '\f')
 # define TRIM(x) (x == ' ' || x == '\n' || x == '\t')
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // to delete
 
 int						ft_atoi(const char *str);
 int						ft_isdigit(int c);
@@ -30,7 +28,7 @@ char					*ft_itoa_base_intmax_t(intmax_t value, int base);
 
 char					*ft_itoa(int n);
 char					*ft_itoa_uintmax_t(uintmax_t n);
-char					*ft_itoa_u(unsigned long long  n);
+char					*ft_itoa_u(unsigned long long n);
 char					*ft_itoa_s(long long n);
 
 void					*ft_memalloc(size_t size);

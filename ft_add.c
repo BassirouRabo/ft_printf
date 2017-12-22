@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 00:35:58 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:08:26 by brabo-hi         ###   ########.fr       */
+/*   Created: 2017/12/21 23:12:48 by brabo-hi          #+#    #+#             */
+/*   Updated: 2017/12/21 23:12:52 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_utils.h"
+#include "ft_add.h"
 
 char	*ft_add_zero(char *dest, int min, int prefix)
 {

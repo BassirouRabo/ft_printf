@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_add.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 00:36:32 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:07:43 by brabo-hi         ###   ########.fr       */
+/*   Created: 2017/12/21 23:13:01 by brabo-hi          #+#    #+#             */
+/*   Updated: 2017/12/21 23:13:21 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+#ifndef FT_ADD_H
+# define FT_ADD_H
 
 # include "ft_struct.h"
 

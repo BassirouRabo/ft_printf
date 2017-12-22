@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 12:04:56 by exam              #+#    #+#             */
-/*   Updated: 2017/12/20 18:45:20 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 23:27:57 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ char	*ft_itoa_base(int value, int base)
 	if (value < 0 && base == 10)
 		++i;
 	if (!(str = malloc(i + 1)))
-		return (NULL);
+		exit(0);
 	nbr = value;
-	nbr = nbr < 0 ? - nbr : nbr;
+	nbr = nbr < 0 ? -nbr : nbr;
 	str[i--] = '\0';
 	while (nbr)
 	{
@@ -49,7 +49,8 @@ char	*ft_itoa_base_uintmax_t(uintmax_t value, int base)
 	char		*str;
 	int			i;
 	uintmax_t	nbr;
-	char		hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	char		hex[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+		'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
 	i = value ? 0 : 1;
 	nbr = value;
@@ -59,7 +60,7 @@ char	*ft_itoa_base_uintmax_t(uintmax_t value, int base)
 		i++;
 	}
 	if (!(str = malloc(i + 1)))
-		return (NULL);
+		exit(0);
 	nbr = value;
 	str[i--] = '\0';
 	while (nbr)
@@ -67,7 +68,7 @@ char	*ft_itoa_base_uintmax_t(uintmax_t value, int base)
 		str[i--] = hex[nbr % base];
 		nbr = nbr / base;
 	}
-	str[0] = value ? str[0] : '0'; 
+	str[0] = value ? str[0] : '0';
 	return (str);
 }
 
@@ -77,11 +78,12 @@ char	*ft_itoa_base_intmax_t(intmax_t value, int base)
 	int			i;
 	uintmax_t	nbr;
 	int			signe;
-	char		hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	char		hex[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+		'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
 	i = value ? 0 : 1;
 	signe = value < 0 ? 1 : 0;
-	nbr= value < 0 ? -value : value;
+	nbr = value < 0 ? -value : value;
 	while (nbr)
 	{
 		nbr = nbr / base;
@@ -90,8 +92,8 @@ char	*ft_itoa_base_intmax_t(intmax_t value, int base)
 	if (value < 0)
 		++i;
 	if (!(str = malloc(i + 1)))
-		return (NULL);
-	nbr= value < 0 ? -value : value;
+		exit(0);
+	nbr = value < 0 ? -value : value;
 	str[i--] = '\0';
 	while (nbr)
 	{
@@ -100,6 +102,6 @@ char	*ft_itoa_base_intmax_t(intmax_t value, int base)
 	}
 	if (value < 0)
 		str[0] = '-';
-	str[0] = value ? str[0] : '0'; 
+	str[0] = value ? str[0] : '0';
 	return (str);
 }
