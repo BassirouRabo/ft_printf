@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 15:36:32 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 18:41:39 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,17 @@ int		ft_printf(const char *str, ...)
 
 int		maini(void)
 {
-	printf("[%5.d]\n", 0);
-	ft_printf("[%5.d]\n", 0);
+	char	s[] = {0};
+	char	c	= 0%31;
+	int	len;
+
+	char	dest[2];
+	dest[0] = 0*31;
+	dest[1] = '\0';
+
+// 	len = printf("%c", c);
+//	printf("\nlen %d\n", len);
+//	ft_printf("[%c]\n", 0);
+	ft_printf("%s\n", NULL);
 	return (0);
 }

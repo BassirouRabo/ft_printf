@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:42:19 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/20 03:01:09 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 16:08:37 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char		*ft_itoa_s(long long n)
 	long long		neg;
 	int		index;
 
-	printf("");
 	index = 0;
 	ret = ft_strnew(words_s(n));
 	if (!ret)

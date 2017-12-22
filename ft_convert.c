@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 15:34:33 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 16:06:38 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ char	*ft_to_uintmax_t(va_list *args, t_cs *cs, int base)
 		out	= (size_t)out;
 	else
 		out	= (unsigned int)out;
-// 	printf("1 [%c] 2 [%c] type[%c] [%zu]\n", cs->modifier1, cs->modifier2, cs->type, out);
 	return (ft_itoa_base_uintmax_t(out, base));
 }
 

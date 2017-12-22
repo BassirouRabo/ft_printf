@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:53:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/19 02:05:46 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/21 18:29:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,20 @@ char	*ft_concat(char *dest, char *str, int len)
 int		ft_is_valid(char *str)
 {
 	return (1);
+}
+
+char	*ft_add_null(char *out)
+{
+	char	*dest;
+
+	if (!(dest = ft_memalloc(7)))
+		exit (0);
+	dest[0] = '(';
+	dest[1] = 'n';
+	dest[2] = 'u';
+	dest[3] = 'l';
+	dest[4] = 'l';
+	dest[5] = ')';
+	dest[6] = '\0';
+	return (dest);
 }
