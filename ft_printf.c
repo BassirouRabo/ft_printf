@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:39:39 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 21:37:03 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_format(char *str, va_list *args)
 	int		i;
 
 	i = 0;
-	if (!ft_is_valid(str) || !(cs = ft_memalloc(sizeof(t_cs))))
+	if (!ft_is_valid(str))
 		return (NULL);
 	if (!(cs = ft_memalloc(sizeof(t_cs))))
 		exit(0);
@@ -32,6 +32,7 @@ char	*ft_format(char *str, va_list *args)
 			return (*t_sets[i].f)(args, cs);
 		i++;
 	}
+	free(cs);
 	return (NULL);
 }
 
@@ -64,6 +65,6 @@ int		ft_printf(const char *str, ...)
 
 int		maini(void)
 {
-	ft_printf("%c\n", 42);
+	ft_printf("%2c\n", 42);
 	return (0);
 }

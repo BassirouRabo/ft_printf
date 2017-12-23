@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 22:31:55 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 21:37:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 char	*ft_set_s(va_list *args, t_cs *cs)
 {
-	int		i;
 	int		max;
 	int		min;
-	wchar_t	*out;
+	char	*out;
 	char	*dest;
 
-	i = 0;
-	if (cs->modifier2 == 'l' || cs->type == 'S')
-		out = (wchar_t *)va_arg(*args, wchar_t *);
-	else
-		out = (wchar_t *)va_arg(*args, char *);
-	dest = !ft_strlen((char *)out) && !cs->width && !cs->precision
-		? ft_add_null((char *)out) : (char *)out;
-	min = ft_strlen((char *)dest);
+	out = ft_to_wchar_t_s(args, cs);
+	dest = !ft_strlen(out) && !cs->width && !cs->precision
+		? ft_add_null(out) : out;
+	min = ft_strlen(dest);
 	min = cs->precision && cs->precision < min ? cs->precision : min;
 	max = (cs->width && cs->width > min) ? cs->width : min;
 	dest = ft_cut_str(dest, min);
@@ -40,18 +35,15 @@ char	*ft_set_s(va_list *args, t_cs *cs)
 char	*ft_set_c(va_list *args, t_cs *cs)
 {
 	char	*dest;
+	char	*out;
 	int		max;
-	wchar_t	out;
 
-	if (cs->modifier2 == 'l' || cs->type == 'C')
-		out = (wchar_t)va_arg(*args, wchar_t);
-	else
-		out = (unsigned char)va_arg(*args, int);
-	dest = ft_add_np((char)out);
-	if (out)
+	out = ft_to_wchar_t_c(args, cs);
+	if (ft_strlen(out))
 		max = cs->width > 1 ? cs->width : 1;
 	else
 		max = cs->width + 1 > 2 ? cs->width + 1 : 2;
+	dest = ft_add_np(*out);
 	dest = ft_add_str(dest, max, cs);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
@@ -119,5 +111,6 @@ char	*ft_set_u(va_list *args, t_cs *cs)
 		dest = ft_add_prefix(dest, prefix, 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
+	free(out);
 	return (dest);
 }

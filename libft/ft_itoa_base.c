@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 12:04:56 by exam              #+#    #+#             */
-/*   Updated: 2017/12/21 23:27:57 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 19:25:08 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_itoa_base(int value, int base)
 	}
 	if (value < 0 && base == 10)
 		++i;
-	if (!(str = malloc(i + 1)))
+	if (!(str = ft_memalloc(i + 1)))
 		exit(0);
 	nbr = value;
 	nbr = nbr < 0 ? -nbr : nbr;
@@ -59,7 +59,7 @@ char	*ft_itoa_base_uintmax_t(uintmax_t value, int base)
 		nbr = nbr / base;
 		i++;
 	}
-	if (!(str = malloc(i + 1)))
+	if (!(str = ft_memalloc(i + 1)))
 		exit(0);
 	nbr = value;
 	str[i--] = '\0';
@@ -91,7 +91,7 @@ char	*ft_itoa_base_intmax_t(intmax_t value, int base)
 	}
 	if (value < 0)
 		++i;
-	if (!(str = malloc(i + 1)))
+	if (!(str = ft_memalloc(i + 1)))
 		exit(0);
 	nbr = value < 0 ? -value : value;
 	str[i--] = '\0';

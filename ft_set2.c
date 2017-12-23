@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:06:54 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 22:37:35 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 20:25:11 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,21 @@ char	*ft_set_x(va_list *args, t_cs *cs)
 	if (cs->type == 'X')
 		while (++i < ft_strlen(dest))
 			dest[i] = (char)ft_toupper(dest[i]);
+	free(out);
 	return (dest);
 }
 
 char	*ft_set_o(va_list *args, t_cs *cs)
 {
+	char	*out;
 	char	*dest;
 	char	min;
 
-	if (!(dest = ft_to_uintmax_t(args, cs, 8)))
+	if (!(out = ft_to_uintmax_t(args, cs, 8)))
 		return (NULL);
-	min = cs->flag1 ? ft_strlen(dest) + 1 : ft_strlen(dest);
+	min = cs->flag1 ? ft_strlen(out) + 1 : ft_strlen(out);
 	min = cs->precision ? cs->precision : min;
-	dest = ft_add_str(dest, ft_find_max(cs, min, 0), cs);
+	dest = ft_add_str(out, ft_find_max(cs, min, 0), cs);
 	if (!cs->precision && cs->digit && !ft_atoi(dest) && min--)
 		dest = ft_delete_last_zero(cs, dest);
 	if ((cs->precision || cs->flag2))
@@ -64,21 +66,24 @@ char	*ft_set_o(va_list *args, t_cs *cs)
 		dest = ft_add_prefix(dest, '0', 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
+	free(out);
 	return (dest);
 }
 
 char	*ft_set_p(va_list *args, t_cs *cs)
 {
-	char		*dest;
-	int			max;
+	char	*out;
+	char	*dest;
+	int		max;
 
-	if (!(dest = ft_to_uintmax_t(args, cs, 16)))
+	if (!(out = ft_to_uintmax_t(args, cs, 16)))
 		return (NULL);
-	max = cs->width > ft_strlen(dest) ? cs->width : ft_strlen(dest);
-	dest = ft_add_str(dest, max, cs);
-	dest = ft_add_prefix(dest, '0', 'x');
+	max = cs->width > ft_strlen(out) ? cs->width : ft_strlen(out);
+	out = ft_add_str(out, max, cs);
+	out = ft_add_prefix(out, '0', 'x');
 	if (cs->flag3)
-		dest = ft_to_left(dest);
+		dest = ft_to_left(out);
+	free(out);
 	return (dest);
 }
 

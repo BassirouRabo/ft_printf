@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 08:23:57 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 23:31:27 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 20:41:54 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void					ft_putchar(char c);
 char					*ft_strnew(size_t size);
 char					*ft_strncat(char *s1, const char *s2, size_t n);
 char					*ft_strcat(char *s1, char *s2);
+void					*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

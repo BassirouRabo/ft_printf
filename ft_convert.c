@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 22:46:50 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 21:25:38 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ char	*ft_to_left(char *str)
 	int		i;
 	int		j;
 	char	*dest;
+	char	*del;
 
 	i = 0;
 	j = 0;
+	del = str;
 	if (*str != ' ')
 		return (str);
-	if (!(dest = ft_memalloc(sizeof(char) * (ft_strlen(str) + 1))))
+	if (!(dest = ft_memalloc((ft_strlen(str) + 1))))
 		exit(0);
 	while (*str == ' ' && str++)
 		i++;
@@ -31,6 +33,7 @@ char	*ft_to_left(char *str)
 	while (i-- > 0)
 		dest[j++] = ' ';
 	dest[j] = '\0';
+	free(del);
 	return (dest);
 }
 
@@ -78,6 +81,37 @@ char	*ft_to_uintmax_t(va_list *args, t_cs *cs, int base)
 	return (ft_itoa_base_uintmax_t(out, base));
 }
 
+char	*ft_to_wchar_t_s(va_list *args, t_cs *cs)
+{
+	char	*dest;
+	wchar_t	*out;
+
+	if (cs->modifier2 == 'l' || cs->type == 'S')
+		out = (wchar_t *)va_arg(*args, wchar_t *);
+	else
+		out = (wchar_t *)va_arg(*args, char *);
+	if (!(dest = ft_memalloc(ft_strlen((char *)out) + 1)))
+		exit(0);
+	char *a = (ft_memcpy(dest, out, ft_strlen((char *)out)));
+	return (a);
+}
+
+char	*ft_to_wchar_t_c(va_list *args, t_cs *cs)
+{
+	char	*dest;
+	wchar_t	out;
+
+	if (cs->modifier2 == 'l' || cs->type == 'S')
+		out = (wchar_t)va_arg(*args, wchar_t);
+	else
+		out = (unsigned char)va_arg(*args, int);
+	if (!(dest = ft_memalloc(2)))
+		exit(0);
+	dest[0] = out;
+	dest[1] = '\0';
+	return (dest);
+}
+
 char	*ft_cut_str(char *out, int min)
 {
 	int		i;
@@ -110,5 +144,6 @@ char	*ft_delete_last_zero(t_cs *cs, char *out)
 	if (cs->width)
 		dest[i++] = ' ';
 	dest[i] = '\0';
+	// free(out);
 	return (dest);
 }
