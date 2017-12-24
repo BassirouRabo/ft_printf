@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 21:25:38 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 00:56:48 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ char	*ft_to_wchar_t_s(va_list *args, t_cs *cs)
 		out = (wchar_t *)va_arg(*args, char *);
 	if (!(dest = ft_memalloc(ft_strlen((char *)out) + 1)))
 		exit(0);
-	char *a = (ft_memcpy(dest, out, ft_strlen((char *)out)));
-	return (a);
+	return (ft_memcpy(dest, out, ft_strlen((char *)out)));
 }
 
 char	*ft_to_wchar_t_c(va_list *args, t_cs *cs)
@@ -144,6 +143,5 @@ char	*ft_delete_last_zero(t_cs *cs, char *out)
 	if (cs->width)
 		dest[i++] = ' ';
 	dest[i] = '\0';
-	// free(out);
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 23:12:48 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 20:16:02 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 23:36:01 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 {
 	int		i;
 	char	*dest;
+	char	*del;
 
 	i = 0;
+	del = out;
 	if (*out != '0' && *out != ' ')
 	{
 		if (!(dest = ft_memalloc(ft_strlen(out) + 1 + (prefix2 ? 1 : 0))))
@@ -43,6 +45,7 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 		while (out && *out)
 			dest[i++] = *out++;
 		dest[i] = '\0';
+		free(del);
 		return (dest);
 	}
 	if (out && *out == '0' && ft_strlen(out) > 1)
@@ -59,12 +62,14 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 	return (out);
 }
 
-char	*ft_add_str(char *str, int max, t_cs *cs)
+char	*ft_add_str(char *str, int max, t_cs *cs, char prefix)
 {
 	int		i;
 	char	*dest;
+	char	*del;
 
 	i = 0;
+	del = str;
 	if (!(dest = ft_memalloc(max + 1)))
 		exit(0);
 	while (i < max && max - i > ft_strlen(str))
@@ -72,10 +77,14 @@ char	*ft_add_str(char *str, int max, t_cs *cs)
 	while (*str)
 		dest[i++] = *(str++);
 	dest[i] = '\0';
+	if (prefix && prefix == '-')
+		free(--del);
+	else
+		free(del);
 	return (dest);
 }
 
-char	*ft_add_null(char *out)
+char	*ft_add_null(void)
 {
 	char	*dest;
 

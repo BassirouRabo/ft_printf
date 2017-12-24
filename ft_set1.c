@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:12:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 21:37:30 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/22 23:35:05 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ char	*ft_set_s(va_list *args, t_cs *cs)
 
 	out = ft_to_wchar_t_s(args, cs);
 	dest = !ft_strlen(out) && !cs->width && !cs->precision
-		? ft_add_null(out) : out;
+		? ft_add_null() : out;
 	min = ft_strlen(dest);
 	min = cs->precision && cs->precision < min ? cs->precision : min;
 	max = (cs->width && cs->width > min) ? cs->width : min;
 	dest = ft_cut_str(dest, min);
-	dest = ft_add_str(dest, max, cs);
+	dest = ft_add_str(dest, max, cs, 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
+	if (!ft_strlen(out))
+		free(out);
 	return (dest);
 }
 
@@ -44,9 +46,10 @@ char	*ft_set_c(va_list *args, t_cs *cs)
 	else
 		max = cs->width + 1 > 2 ? cs->width + 1 : 2;
 	dest = ft_add_np(*out);
-	dest = ft_add_str(dest, max, cs);
+	dest = ft_add_str(dest, max, cs, 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
+	free(out);
 	return (dest);
 }
 
@@ -69,7 +72,7 @@ char	*ft_set_d(va_list *args, t_cs *cs)
 	if (*out == '-')
 		out++;
 	min = ft_find_min(cs, ft_strlen(out), prefix ? 1 : 0);
-	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs);
+	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs, prefix);
 	if (!cs->precision && cs->digit && !ft_atoi(dest) && min--)
 		dest = ft_delete_last_zero(cs, dest);
 	if (cs->precision > ft_strlen(out))
@@ -101,7 +104,7 @@ char	*ft_set_u(va_list *args, t_cs *cs)
 	if (*out != '-' && cs->flag4)
 		prefix = prefix ? '-' : 0;
 	min = ft_find_min(cs, ft_strlen(out), prefix ? 1 : 0);
-	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs);
+	dest = ft_add_str(out, ft_find_max(cs, min, prefix ? 1 : 0), cs, prefix);
 	if (cs->precision > ft_strlen(out) + (prefix ? 1 : 0))
 		dest = ft_add_zero(dest,
 				(cs->precision + (prefix ? 1 : 0)), (prefix ? 1 : 0));
@@ -111,6 +114,5 @@ char	*ft_set_u(va_list *args, t_cs *cs)
 		dest = ft_add_prefix(dest, prefix, 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
-	free(out);
 	return (dest);
 }

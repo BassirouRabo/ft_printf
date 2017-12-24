@@ -44,5 +44,7 @@ char					*ft_strnew(size_t size);
 char					*ft_strncat(char *s1, const char *s2, size_t n);
 char					*ft_strcat(char *s1, char *s2);
 void					*ft_memcpy(void *dst, const void *src, size_t n);
+void					ft_memdel(void **ap);
+void					*ft_memset(void *b, int c, size_t len);
 
 #endif

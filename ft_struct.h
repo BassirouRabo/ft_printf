@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 23:21:37 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 14:58:51 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 20:26:00 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 		|| t == 'X' || t == 'c' || t == 'C' || t == 'd' || t == '%')
 # define TYPE_UP(t) (t == 'D' || t == 'O' || t == 'U' || t == 'C' || t == 'S')
 # define FLAGS(t) (t == '#' || t == '0' || t == '-' || t == '+' || t == ' ')
+# define MOD(c) (c == 'h' || c == 'l' || c == 'j' || c == 't' || c == '.' || c == 'z')
 
 # include <stdarg.h>
 # include <stdlib.h>

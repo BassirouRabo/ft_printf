@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 19:43:18 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 21:37:03 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 20:30:14 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 char	*ft_format(char *str, va_list *args)
 {
+	char	*dest;
 	t_cs	*cs;
 	int		i;
 
 	i = 0;
-	if (!ft_is_valid(str))
-		return (NULL);
 	if (!(cs = ft_memalloc(sizeof(t_cs))))
 		exit(0);
 	while (i < 5)
@@ -29,10 +28,13 @@ char	*ft_format(char *str, va_list *args)
 	while (i < 15)
 	{
 		if (cs->type && cs->type == t_sets[i].type)
-			return (*t_sets[i].f)(args, cs);
+		{
+			dest = (*t_sets[i].f)(args, cs);
+			free(cs);
+			return (dest);
+		}
 		i++;
 	}
-	free(cs);
 	return (NULL);
 }
 
@@ -40,15 +42,19 @@ int		ft_printf(const char *str, ...)
 {
 	va_list	args;
 	char	*dest;
+	char	*out;
 
 	dest = NULL;
 	va_start(args, str);
+	if (!ft_is_valid((char *)str))
+		return (0);
 	while (str && *str)
 	{
 		if (*str == '%' && str++)
 		{
-			if (!(dest = ft_concat(dest, ft_format((char *)str, &args), 0)))
+			if (!(dest = ft_concat(dest, out = ft_format((char *)str, &args), 0)))
 				return (-1);
+			free(out);
 			while (!TYPE(*str))
 				str++;
 			str++;
@@ -63,8 +69,9 @@ int		ft_printf(const char *str, ...)
 	return (ft_display(dest));
 }
 
-int		maini(void)
+int		main1(void)
 {
-	ft_printf("%2c\n", 42);
+ 	printf("%d\n", printf("%k"));
+ 	printf("%d\n", ft_printf("%"));
 	return (0);
 }

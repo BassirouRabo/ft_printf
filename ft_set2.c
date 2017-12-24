@@ -27,7 +27,7 @@ char	*ft_set_x(va_list *args, t_cs *cs)
 	min = ft_atoi(out) ? min : 1;
 	size_prefix = cs->flag1 ? 2 : 0;
 	size_prefix = ft_atoi(out) ? size_prefix : 0;
-	dest = ft_add_str(out, ft_find_max(cs, min, size_prefix), cs);
+	dest = ft_add_str(out, ft_find_max(cs, min, size_prefix), cs, 0);
 	if (!cs->precision && cs->digit && !ft_atoi(dest) && min--)
 		dest = ft_delete_last_zero(cs, dest);
 	if (cs->precision > ft_strlen(out) + size_prefix)
@@ -41,7 +41,6 @@ char	*ft_set_x(va_list *args, t_cs *cs)
 	if (cs->type == 'X')
 		while (++i < ft_strlen(dest))
 			dest[i] = (char)ft_toupper(dest[i]);
-	free(out);
 	return (dest);
 }
 
@@ -55,7 +54,7 @@ char	*ft_set_o(va_list *args, t_cs *cs)
 		return (NULL);
 	min = cs->flag1 ? ft_strlen(out) + 1 : ft_strlen(out);
 	min = cs->precision ? cs->precision : min;
-	dest = ft_add_str(out, ft_find_max(cs, min, 0), cs);
+	dest = ft_add_str(out, ft_find_max(cs, min, 0), cs, 0);
 	if (!cs->precision && cs->digit && !ft_atoi(dest) && min--)
 		dest = ft_delete_last_zero(cs, dest);
 	if ((cs->precision || cs->flag2))
@@ -66,7 +65,6 @@ char	*ft_set_o(va_list *args, t_cs *cs)
 		dest = ft_add_prefix(dest, '0', 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
-	free(out);
 	return (dest);
 }
 
@@ -79,12 +77,11 @@ char	*ft_set_p(va_list *args, t_cs *cs)
 	if (!(out = ft_to_uintmax_t(args, cs, 16)))
 		return (NULL);
 	max = cs->width > ft_strlen(out) ? cs->width : ft_strlen(out);
-	out = ft_add_str(out, max, cs);
+	out = ft_add_str(out, max, cs, 0);
 	out = ft_add_prefix(out, '0', 'x');
 	if (cs->flag3)
-		dest = ft_to_left(out);
-	free(out);
-	return (dest);
+		return (ft_to_left(out));
+	return (out);
 }
 
 char	*ft_set_z(va_list *args, t_cs *cs)
@@ -97,7 +94,7 @@ char	*ft_set_z(va_list *args, t_cs *cs)
 	dest[0] = '%';
 	dest[1] = '\0';
 	max = cs->width ? cs->width : 1;
-	dest = ft_add_str(dest, max, cs);
+	dest = ft_add_str(dest, max, cs, 0);
 	if (cs->flag3)
 		dest = ft_to_left(dest);
 	return (dest);

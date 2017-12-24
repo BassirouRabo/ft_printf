@@ -17,8 +17,8 @@
 
 char	*ft_add_zero(char *dest, int min, int prefix);
 char	*ft_add_prefix(char *out, char prefix1, char prefix2);
-char	*ft_add_str(char *str, int max, t_cs *cs);
-char	*ft_add_null(char *out);
+char	*ft_add_str(char *str, int max, t_cs *cs, char prefix);
+char	*ft_add_null(void);
 char	*ft_add_np(char c);
 
 #endif
