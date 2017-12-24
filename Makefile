@@ -6,11 +6,11 @@
 #    By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/23 22:56:11 by brabo-hi          #+#    #+#              #
-#    Updated: 2017/12/24 00:11:44 by brabo-hi         ###   ########.fr        #
+#    Updated: 2017/12/24 00:17:57 by brabo-hi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=printf.a
+NAME=libftprintf.a
 SRC=\
 	ft_add.c\
 	ft_convert.c\
