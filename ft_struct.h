@@ -6,24 +6,24 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 23:21:37 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/23 20:26:00 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/24 00:06:16 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRUCT_H
 # define FT_STRUCT_H
 
-# define TYPE(t)  (t == 's' || t == 'S' || t == 'p' ||  t == 'D' || t == 'i'\
-		|| t == 'o' || t == 'O' || t == 'u' || t == 'U' || t == 'x'\
-		|| t == 'X' || t == 'c' || t == 'C' || t == 'd' || t == '%')
+# define TYPE(t)  (t == 's' || t == 'p' || TYPE1(t) || TYPE2(t) || TYPE_UP(t))
+# define TYPE1(t) (t == 'i' || t == 'o' || t == 'c' || t == 'd')
+# define TYPE2(t) (t == 'u' || t == 'x' || t == 'X'  ||  t == '%')
 # define TYPE_UP(t) (t == 'D' || t == 'O' || t == 'U' || t == 'C' || t == 'S')
 # define FLAGS(t) (t == '#' || t == '0' || t == '-' || t == '+' || t == ' ')
-# define MOD(c) (c == 'h' || c == 'l' || c == 'j' || c == 't' || c == '.' || c == 'z')
+# define MOD(c) (c == 'h' || c == 'l' || c == 'j' || MOD1(c))
+# define MOD1(c) (c == 't' || c == '.' || c == 'z')
 
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct		s_cs
 {

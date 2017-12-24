@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 23:12:48 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/22 23:36:01 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 23:14:12 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_add_zero(char *dest, int min, int prefix)
 	min = prefix ? min - prefix : min;
 	if (*dest != ' ')
 		return (dest);
-	while (dest[i] == ' ' && (i < ft_strlen(dest) - min))
+	while (dest[i] == ' ' && (i < (int)ft_strlen(dest) - min))
 		i++;
 	while (dest[i] == ' ')
 		dest[i++] = '0';
@@ -30,24 +30,12 @@ char	*ft_add_zero(char *dest, int min, int prefix)
 char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 {
 	int		i;
-	char	*dest;
 	char	*del;
 
 	i = 0;
 	del = out;
 	if (*out != '0' && *out != ' ')
-	{
-		if (!(dest = ft_memalloc(ft_strlen(out) + 1 + (prefix2 ? 1 : 0))))
-			exit(0);
-		dest[i++] = prefix1;
-		if (prefix2)
-			dest[i++] = prefix2;
-		while (out && *out)
-			dest[i++] = *out++;
-		dest[i] = '\0';
-		free(del);
-		return (dest);
-	}
+		return (ft_add_prefix_help(out, prefix1, prefix2));
 	if (out && *out == '0' && ft_strlen(out) > 1)
 	{
 		*out = prefix1;
@@ -62,7 +50,7 @@ char	*ft_add_prefix(char *out, char prefix1, char prefix2)
 	return (out);
 }
 
-char	*ft_add_str(char *str, int max, t_cs *cs, char prefix)
+char	*ft_add_str(char *str, int max, char prefix)
 {
 	int		i;
 	char	*dest;
@@ -72,7 +60,7 @@ char	*ft_add_str(char *str, int max, t_cs *cs, char prefix)
 	del = str;
 	if (!(dest = ft_memalloc(max + 1)))
 		exit(0);
-	while (i < max && max - i > ft_strlen(str))
+	while (i < max && max - i > (int)ft_strlen(str))
 		dest[i++] = ' ';
 	while (*str)
 		dest[i++] = *(str++);

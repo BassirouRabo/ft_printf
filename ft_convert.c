@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/23 00:56:48 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 20:58:46 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,40 +108,5 @@ char	*ft_to_wchar_t_c(va_list *args, t_cs *cs)
 		exit(0);
 	dest[0] = out;
 	dest[1] = '\0';
-	return (dest);
-}
-
-char	*ft_cut_str(char *out, int min)
-{
-	int		i;
-	char	*dest;
-
-	i = 0;
-	if (ft_strlen(out) && ft_strlen(out) <= min)
-		return (out);
-	if (!(dest = ft_memalloc(min + 1)))
-		exit(0);
-	while (min--)
-		dest[i++] = out ? *out++ : (char)NULL;
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_delete_last_zero(t_cs *cs, char *out)
-{
-	char	*dest;
-	int		i;
-	int		size;
-
-	i = 0;
-	size = cs->width ? ft_strlen(out) + 1 : ft_strlen(out);
-	if (!(dest = ft_memalloc(size)))
-		exit(0);
-	size = cs->width ? size - 2 : size - 1;
-	while (size--)
-		dest[i++] = ' ';
-	if (cs->width)
-		dest[i++] = ' ';
-	dest[i] = '\0';
 	return (dest);
 }

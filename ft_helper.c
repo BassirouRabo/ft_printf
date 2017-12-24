@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 01:53:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/23 20:23:41 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 23:10:09 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_concat(char *dest, char *str, int len)
 		exit(0);
 	out = ft_strcat(out, dest);
 	out = ft_strncat(out, str, len);
- 	free(dest);
+	free(dest);
 	return (out);
 }
 
@@ -54,6 +54,8 @@ int		ft_display(char *dest)
 
 	len = ft_strlen(dest);
 	i = 0;
+	if (!dest)
+		return (0);
 	while (dest[i])
 	{
 		if (dest[i] == '^' && dest[i + 1] && dest[i + 1] == '@')
@@ -63,4 +65,39 @@ int		ft_display(char *dest)
 	ft_putstr(dest);
 	free(dest);
 	return (len);
+}
+
+char	*ft_cut_str(char *out, int min)
+{
+	int		i;
+	char	*dest;
+
+	i = 0;
+	if (ft_strlen(out) && (int)ft_strlen(out) <= min)
+		return (out);
+	if (!(dest = ft_memalloc(min + 1)))
+		exit(0);
+	while (min--)
+		dest[i++] = out ? *out++ : (char)NULL;
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_delete_last_zero(t_cs *cs, char *out)
+{
+	char	*dest;
+	int		i;
+	int		size;
+
+	i = 0;
+	size = cs->width ? ft_strlen(out) + 1 : ft_strlen(out);
+	if (!(dest = ft_memalloc(size)))
+		exit(0);
+	size = cs->width ? size - 2 : size - 1;
+	while (size--)
+		dest[i++] = ' ';
+	if (cs->width)
+		dest[i++] = ' ';
+	dest[i] = '\0';
+	return (dest);
 }

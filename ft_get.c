@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 00:32:23 by brabo-hi          #+#    #+#             */
-/*   Updated: 2017/12/21 19:24:28 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2017/12/23 21:22:59 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ int		ft_get_mod(char *str, t_cs *cs)
 	i = 0;
 	while (!TYPE(str[i]))
 		i++;
-	i--;
-	if (str[i] == 'j' || str[i] == 'z')
+	if (i-- && (str[i] == 'j' || str[i] == 'z'))
 	{
 		if (cs->modifier2)
 			cs->modifier1 = str[i];
